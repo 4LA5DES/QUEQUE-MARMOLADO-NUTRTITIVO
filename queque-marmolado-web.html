@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queque Marmolado Nutritivo</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f5f0;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #8a4b23, #4a2511);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        h2 {
+            color: #8a4b23;
+            border-bottom: 2px solid #8a4b23;
+            padding-bottom: 0.5rem;
+            margin-top: 2rem;
+        }
+        
+        .recipe-intro {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .recipe-image {
+            flex: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .recipe-description {
+            flex: 1;
+            padding: 1rem;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .ingredients-section, .preparation-section {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .ingredients-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .ingredients-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed #e0e0e0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .ingredients-list li:before {
+            content: "•";
+            color: #8a4b23;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .preparation-steps {
+            counter-reset: step-counter;
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .preparation-steps li {
+            padding: 1rem 0;
+            border-bottom: 1px dashed #e0e0e0;
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .preparation-steps li:before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            position: absolute;
+            left: 0;
+            top: 1rem;
+            background-color: #8a4b23;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .nutrition-facts {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nutrition-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .nutrition-table td, .nutrition-table th {
+            padding: 0.75rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .nutrition-table th {
+            text-align: left;
+            color: #8a4b23;
+        }
+        
+        .highlight {
+            background-color: #fdf2e9;
+            padding: 0.5rem;
+            border-left: 4px solid #8a4b23;
+            margin: 1rem 0;
+        }
+        
+        .contact-section {
+            background-color: #8a4b23;
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin: 0.5rem;
+        }
+        
+        .contact-item i {
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        footer {
+            background-color: #4a2511;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 3rem;
+        }
+        
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .gallery-item {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .gallery-caption {
+            padding: 1rem;
+            text-align: center;
+            font-style: italic;
+        }
+        
+        @media (max-width: 768px) {
+            .recipe-intro {
+                flex-direction: column;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .gallery-item {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>QUEQUE MARMOLADO NUTRITIVO</h1>
+            <p>Una deliciosa combinación de sabores con el valor nutricional de la quinua</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="recipe-intro">
+            <div class="recipe-image">
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <img src="/api/placeholder/500/350" alt="Queque Marmolado Nutritivo - Vista completa" style="border-radius: 10px; width: 100%;">
+                    <div style="display: flex; gap: 10px; justify-content: space-between;">
+                        <img src="/api/placeholder/240/160" alt="Queque Marmolado - Corte transversal" style="border-radius: 10px; width: 48%;">
+                        <img src="/api/placeholder/240/160" alt="Queque Marmolado - Vista interior" style="border-radius: 10px; width: 48%;">
+                    </div>
+                </div>
+                <p style="text-align: center; font-style: italic; margin-top: 10px;">Queque marmolado con su característico patrón de veteado</p>
+            </div>
+            <div class="recipe-description">
+                <h2>¿Qué es un Queque Marmolado?</h2>
+                <p>El queque marmolado es un postre clásico que combina dos masas de diferentes colores y sabores para crear un efecto visual similar al mármol. En esta versión nutritiva, incorporamos quinua molida para aumentar su valor nutricional.</p>
+                <div class="highlight">
+                    <p>La adición de quinua molida aporta proteína, fibra y minerales esenciales, convirtiendo este delicioso postre en una opción más saludable sin sacrificar sabor.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="/api/placeholder/400/300" alt="Queque Marmolado - Foto 1">
+                <div class="gallery-caption">
+                    Corte perfecto mostrando el patrón marmolado característico
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="/api/placeholder/400/300" alt="Queque Marmolado - Foto 2">
+                <div class="gallery-caption">
+                    Vista superior del queque con su textura esponjosa
+                </div>
+            </div>
+        </div>
+        
+        <div class="ingredients-section">
+            <h2>INGREDIENTES</h2>
+            <ul class="ingredients-list">
+                <li>½ taza de mantequilla</li>
+                <li>½ taza de azúcar blanca</li>
+                <li>6 huevos</li>
+                <li>1 ½ tazas de harina</li>
+                <li>½ taza quinua molida</li>
+                <li>1 taza de maicena</li>
+                <li>3 cucharillas de polvo de hornear</li>
+                <li>½ cucharilla de bicarbonato</li>
+                <li>1 pizca de sal</li>
+                <li>1 cucharilla de esencia de vainilla</li>
+                <li>3 cucharas de cocoa negra</li>
+                <li>Caramelin</li>
+                <li>Leche fresca (cantidad necesaria)</li>
+            </ul>
+        </div>
+        
+        <div class="preparation-section">
+            <h2>PREPARACIÓN</h2>
+            <ol class="preparation-steps">
+                <li>En un bowl grande, colocar la mantequilla junto con el azúcar. Batir ambos ingredientes hasta obtener una mezcla cremosa y homogénea.</li>
+                <li>A continuación, agregar los huevos uno por uno, mezclando bien después de cada adición.</li>
+                <li>Cernir la harina, la quinua molida, la maicena, el polvo de hornear, el bicarbonato y la sal. Incorporar gradualmente a la mezcla húmeda.</li>
+                <li>Añadir la esencia de vainilla y continuar mezclando hasta integrar completamente. Si la masa está demasiado espesa, incorporar una pequeña cantidad de leche.</li>
+                <li>Una vez lista la masa base, dividirla en <strong>dos partes iguales</strong>.</li>
+                <li>A <strong>una de las mitades</strong> añadir <strong>cocoa negra</strong> y <strong>caramelin</strong>, mezclando bien hasta que ambos ingredientes se integren uniformemente.</li>
+                <li>Verter alternadamente ambas mezclas en un molde previamente enmantequillado para crear el efecto marmolado.</li>
+                <li>Hornear a 180°C durante 30 a 40 minutos, o hasta que al insertar un palillo, este salga limpio.</li>
+                <li>Dejar enfriar completamente antes de desmoldar y servir.</li>
+            </ol>
+        </div>
+        
+        <div class="nutrition-facts">
+            <h2>VALORES NUTRICIONALES</h2>
+            <p>Este queque marmolado no solo es delicioso sino también nutritivo gracias a la incorporación de quinua molida:</p>
+            <table class="nutrition-table">
+                <tr>
+                    <th>Nutriente</th>
+                    <th>Beneficio</th>
+                </tr>
+                <tr>
+                    <td>Proteína (de la quinua)</td>
+                    <td>Contiene todos los aminoácidos esenciales, ideal para el desarrollo muscular</td>
+                </tr>
+                <tr>
+                    <td>Fibra</td>
+                    <td>Mejora la digestión y proporciona sensación de saciedad</td>
+                </tr>
+                <tr>
+                    <td>Hierro</td>
+                    <td>Ayuda a prevenir la anemia y mejora el transporte de oxígeno</td>
+                </tr>
+                <tr>
+                    <td>Magnesio</td>
+                    <td>Contribuye a la salud ósea y la función muscular</td>
+                </tr>
+                <tr>
+                    <td>Antioxidantes (del cacao)</td>
+                    <td>Protegen contra el daño celular y los radicales libres</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="contact-section">
+            <h2>CONTACTOS Y UBICACIÓN</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i>📞</i>
+                    <span>68256651</span>
+                </div>
+                <div class="contact-item">
+                    <i>📞</i>
+                    <span>74134826</span>
+                </div>
+                <div class="contact-item">
+                    <i>📞</i>
+                    <span>63694557</span>
+                </div>
+            </div>
+            <div style="margin-top: 20px;">
+                <h3>Nuestra Ubicación</h3>
+                <p>Nos encontramos en: 18°04'47.7"S 67°14'27.1"W (-18.079917, -67.240861)</p>
+                <div style="width: 100%; height: 300px; border-radius: 10px; overflow: hidden; margin-top: 15px;">
+                    <iframe 
+                        width="100%" 
+                        height="100%" 
+                        frameborder="0" 
+                        scrolling="no" 
+                        marginheight="0" 
+                        marginwidth="0" 
+                        src="https://maps.google.com/maps?q=-18.079917,-67.240861&z=15&output=embed">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+        
+        <div class="highlight">
+            <p><strong>Consejo:</strong> Para un efecto marmolado más definido, utiliza una cuchara para verter alternadamente las mezclas en el molde y luego pasa ligeramente un tenedor o palillo para crear el patrón.</p>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Queque Marmolado Nutritivo | Receta Tradicional Mejorada con Quinua</p>
+        </div>
+    </footer>
+</body>
+</html>
